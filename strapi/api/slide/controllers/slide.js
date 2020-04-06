@@ -5,4 +5,9 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+    impress: async ctx => {
+        var steps = await strapi.services.step.find();
+        return steps;
+    },
+};

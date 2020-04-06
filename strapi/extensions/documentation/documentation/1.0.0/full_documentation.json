@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/07/2020 12:31:48 AM"
+    "x-generation-date": "04/07/2020 12:47:17 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -45,6 +45,63 @@
     }
   ],
   "paths": {
+    "/slides/impress": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Slide"
+        ],
+        "parameters": []
+      }
+    },
     "/slides": {
       "get": {
         "deprecated": false,
@@ -3257,6 +3314,9 @@
                 },
                 "slide": {
                   "type": "string"
+                },
+                "body": {
+                  "type": "string"
                 }
               }
             }
@@ -3314,6 +3374,9 @@
                 }
               }
             }
+          },
+          "body": {
+            "type": "string"
           }
         }
       },
@@ -3326,6 +3389,9 @@
             "type": "uid"
           },
           "slide": {
+            "type": "string"
+          },
+          "body": {
             "type": "string"
           }
         }

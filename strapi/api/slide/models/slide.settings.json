@@ -17,8 +17,8 @@
       "type": "uid"
     },
     "steps": {
-      "collection": "step",
-      "via": "slide"
+      "via": "slide",
+      "collection": "step"
     }
   }
 }

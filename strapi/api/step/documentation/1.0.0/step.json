@@ -549,6 +549,9 @@
                 }
               }
             }
+          },
+          "body": {
+            "type": "string"
           }
         }
       },
@@ -561,6 +564,9 @@
             "type": "uid"
           },
           "slide": {
+            "type": "string"
+          },
+          "body": {
             "type": "string"
           }
         }

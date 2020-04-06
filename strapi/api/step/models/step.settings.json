@@ -17,8 +17,11 @@
       "type": "uid"
     },
     "slide": {
-      "via": "steps",
-      "model": "slide"
+      "model": "slide",
+      "via": "steps"
+    },
+    "body": {
+      "type": "richtext"
     }
   }
 }
