@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
   "connection": "default",
-  "collectionName": "slides",
+  "collectionName": "steps",
   "info": {
-    "name": "slide"
+    "name": "step"
   },
   "options": {
     "increments": true,
@@ -16,9 +16,9 @@
     "uuid": {
       "type": "uid"
     },
-    "steps": {
-      "collection": "step",
-      "via": "slide"
+    "slide": {
+      "via": "steps",
+      "model": "slide"
     }
   }
 }
