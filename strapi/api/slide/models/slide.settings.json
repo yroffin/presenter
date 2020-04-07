@@ -17,8 +17,39 @@
       "type": "uid"
     },
     "steps": {
-      "via": "slide",
-      "collection": "step"
+      "collection": "step",
+      "via": "slide"
+    },
+    "duration": {
+      "type": "integer",
+      "default": 1000
+    },
+    "width": {
+      "type": "integer",
+      "default": 1024
+    },
+    "height": {
+      "type": "integer",
+      "default": 768
+    },
+    "maxScale": {
+      "type": "integer",
+      "default": 3
+    },
+    "minScale": {
+      "default": 0,
+      "type": "integer"
+    },
+    "perspective": {
+      "type": "integer",
+      "default": 1000
+    },
+    "autoplay": {
+      "type": "integer",
+      "default": 7
+    },
+    "liste": {
+      "type": "json"
     }
   }
 }

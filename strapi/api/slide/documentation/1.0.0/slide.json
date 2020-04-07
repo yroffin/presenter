@@ -606,9 +606,64 @@
                 },
                 "body": {
                   "type": "string"
+                },
+                "x": {
+                  "type": "integer"
+                },
+                "y": {
+                  "type": "integer"
+                },
+                "z": {
+                  "type": "integer"
+                },
+                "scale": {
+                  "type": "integer"
+                },
+                "class": {
+                  "type": "string"
+                },
+                "rotate": {
+                  "type": "integer"
+                },
+                "rotateX": {
+                  "type": "integer"
+                },
+                "rotateY": {
+                  "type": "integer"
                 }
               }
             }
+          },
+          "duration": {
+            "type": "integer",
+            "default": 1000
+          },
+          "width": {
+            "type": "integer",
+            "default": 1024
+          },
+          "height": {
+            "type": "integer",
+            "default": 768
+          },
+          "maxScale": {
+            "type": "integer",
+            "default": 3
+          },
+          "minScale": {
+            "type": "integer",
+            "default": 0
+          },
+          "perspective": {
+            "type": "integer",
+            "default": 1000
+          },
+          "autoplay": {
+            "type": "integer",
+            "default": 7
+          },
+          "liste": {
+            "type": "object"
           }
         }
       },
@@ -625,6 +680,37 @@
             "items": {
               "type": "string"
             }
+          },
+          "duration": {
+            "type": "integer",
+            "default": 1000
+          },
+          "width": {
+            "type": "integer",
+            "default": 1024
+          },
+          "height": {
+            "type": "integer",
+            "default": 768
+          },
+          "maxScale": {
+            "type": "integer",
+            "default": 3
+          },
+          "minScale": {
+            "type": "integer",
+            "default": 0
+          },
+          "perspective": {
+            "type": "integer",
+            "default": 1000
+          },
+          "autoplay": {
+            "type": "integer",
+            "default": 7
+          },
+          "liste": {
+            "type": "object"
           }
         }
       }

@@ -23,7 +23,11 @@
     "strapi-plugin-graphql": "3.0.0-beta.19.5",
     "strapi-plugin-upload": "3.0.0-beta.19.5",
     "strapi-plugin-users-permissions": "3.0.0-beta.19.5",
-    "strapi-utils": "3.0.0-beta.19.5"
+    "strapi-utils": "3.0.0-beta.19.5",
+    "lodash": "^4.17.15",
+    "markdown-it": "^10.0.0",
+    "markdown-it-imsize": "2.0.1",
+    "jade": "^1.11.0"
   },
   "author": {
     "name": "A Strapi developer"

@@ -17,11 +17,43 @@
       "type": "uid"
     },
     "slide": {
-      "model": "slide",
-      "via": "steps"
+      "via": "steps",
+      "model": "slide"
     },
     "body": {
       "type": "richtext"
+    },
+    "x": {
+      "type": "integer",
+      "default": 0
+    },
+    "y": {
+      "type": "integer",
+      "default": 0
+    },
+    "z": {
+      "type": "integer",
+      "default": 0
+    },
+    "scale": {
+      "type": "integer",
+      "default": 0
+    },
+    "class": {
+      "type": "string",
+      "default": "step slide"
+    },
+    "rotate": {
+      "type": "integer",
+      "default": 0
+    },
+    "rotateX": {
+      "type": "integer",
+      "default": 0
+    },
+    "rotateY": {
+      "type": "integer",
+      "default": 0
     }
   }
 }

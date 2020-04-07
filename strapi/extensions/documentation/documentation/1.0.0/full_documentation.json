@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/07/2020 12:47:17 AM"
+    "x-generation-date": "04/08/2020 12:59:09 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3317,9 +3317,64 @@
                 },
                 "body": {
                   "type": "string"
+                },
+                "x": {
+                  "type": "integer"
+                },
+                "y": {
+                  "type": "integer"
+                },
+                "z": {
+                  "type": "integer"
+                },
+                "scale": {
+                  "type": "integer"
+                },
+                "class": {
+                  "type": "string"
+                },
+                "rotate": {
+                  "type": "integer"
+                },
+                "rotateX": {
+                  "type": "integer"
+                },
+                "rotateY": {
+                  "type": "integer"
                 }
               }
             }
+          },
+          "duration": {
+            "type": "integer",
+            "default": 1000
+          },
+          "width": {
+            "type": "integer",
+            "default": 1024
+          },
+          "height": {
+            "type": "integer",
+            "default": 768
+          },
+          "maxScale": {
+            "type": "integer",
+            "default": 3
+          },
+          "minScale": {
+            "type": "integer",
+            "default": 0
+          },
+          "perspective": {
+            "type": "integer",
+            "default": 1000
+          },
+          "autoplay": {
+            "type": "integer",
+            "default": 7
+          },
+          "liste": {
+            "type": "object"
           }
         }
       },
@@ -3336,6 +3391,37 @@
             "items": {
               "type": "string"
             }
+          },
+          "duration": {
+            "type": "integer",
+            "default": 1000
+          },
+          "width": {
+            "type": "integer",
+            "default": 1024
+          },
+          "height": {
+            "type": "integer",
+            "default": 768
+          },
+          "maxScale": {
+            "type": "integer",
+            "default": 3
+          },
+          "minScale": {
+            "type": "integer",
+            "default": 0
+          },
+          "perspective": {
+            "type": "integer",
+            "default": 1000
+          },
+          "autoplay": {
+            "type": "integer",
+            "default": 7
+          },
+          "liste": {
+            "type": "object"
           }
         }
       },
@@ -3372,11 +3458,67 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "duration": {
+                "type": "integer"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "maxScale": {
+                "type": "integer"
+              },
+              "minScale": {
+                "type": "integer"
+              },
+              "perspective": {
+                "type": "integer"
+              },
+              "autoplay": {
+                "type": "integer"
+              },
+              "liste": {
+                "type": "object"
               }
             }
           },
           "body": {
             "type": "string"
+          },
+          "x": {
+            "type": "integer",
+            "default": 0
+          },
+          "y": {
+            "type": "integer",
+            "default": 0
+          },
+          "z": {
+            "type": "integer",
+            "default": 0
+          },
+          "scale": {
+            "type": "integer",
+            "default": 0
+          },
+          "class": {
+            "type": "string",
+            "default": "step slide"
+          },
+          "rotate": {
+            "type": "integer",
+            "default": 0
+          },
+          "rotateX": {
+            "type": "integer",
+            "default": 0
+          },
+          "rotateY": {
+            "type": "integer",
+            "default": 0
           }
         }
       },
@@ -3393,6 +3535,38 @@
           },
           "body": {
             "type": "string"
+          },
+          "x": {
+            "type": "integer",
+            "default": 0
+          },
+          "y": {
+            "type": "integer",
+            "default": 0
+          },
+          "z": {
+            "type": "integer",
+            "default": 0
+          },
+          "scale": {
+            "type": "integer",
+            "default": 0
+          },
+          "class": {
+            "type": "string",
+            "default": "step slide"
+          },
+          "rotate": {
+            "type": "integer",
+            "default": 0
+          },
+          "rotateX": {
+            "type": "integer",
+            "default": 0
+          },
+          "rotateY": {
+            "type": "integer",
+            "default": 0
           }
         }
       },
