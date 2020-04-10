@@ -17,8 +17,8 @@
       "type": "uid"
     },
     "slide": {
-      "via": "steps",
-      "model": "slide"
+      "model": "slide",
+      "via": "steps"
     },
     "body": {
       "type": "richtext"
@@ -54,6 +54,10 @@
     "rotateY": {
       "type": "integer",
       "default": 0
+    },
+    "title": {
+      "type": "string",
+      "default": "default"
     }
   }
 }

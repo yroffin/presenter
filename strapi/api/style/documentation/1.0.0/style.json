@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/steps": {
+    "/styles": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Step"
+                    "$ref": "#/components/schemas/Style"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Step"
+          "Style"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Step"
+                  "$ref": "#/components/schemas/Style"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Step"
+          "Style"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewStep"
+                "$ref": "#/components/schemas/NewStyle"
               }
             }
           }
         }
       }
     },
-    "/steps/count": {
+    "/styles/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Step"
+          "Style"
         ],
         "parameters": []
       }
     },
-    "/steps/{id}": {
+    "/styles/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Step"
+                  "$ref": "#/components/schemas/Style"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Step"
+          "Style"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Step"
+                  "$ref": "#/components/schemas/Style"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Step"
+          "Style"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewStep"
+                "$ref": "#/components/schemas/NewStyle"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Step"
+          "Style"
         ],
         "parameters": [
           {
@@ -514,9 +514,10 @@
   },
   "components": {
     "schemas": {
-      "Step": {
+      "Style": {
         "required": [
-          "id"
+          "id",
+          "name"
         ],
         "properties": {
           "id": {
@@ -525,8 +526,8 @@
           "name": {
             "type": "string"
           },
-          "uuid": {
-            "type": "uid"
+          "body": {
+            "type": "string"
           },
           "slide": {
             "required": [
@@ -582,97 +583,22 @@
                 "type": "string"
               }
             }
-          },
-          "body": {
-            "type": "string"
-          },
-          "x": {
-            "type": "integer",
-            "default": 0
-          },
-          "y": {
-            "type": "integer",
-            "default": 0
-          },
-          "z": {
-            "type": "integer",
-            "default": 0
-          },
-          "scale": {
-            "type": "integer",
-            "default": 0
-          },
-          "class": {
-            "type": "string",
-            "default": "step slide"
-          },
-          "rotate": {
-            "type": "integer",
-            "default": 0
-          },
-          "rotateX": {
-            "type": "integer",
-            "default": 0
-          },
-          "rotateY": {
-            "type": "integer",
-            "default": 0
-          },
-          "title": {
-            "type": "string",
-            "default": "default"
           }
         }
       },
-      "NewStep": {
+      "NewStyle": {
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string"
           },
-          "uuid": {
-            "type": "uid"
-          },
-          "slide": {
-            "type": "string"
-          },
           "body": {
             "type": "string"
           },
-          "x": {
-            "type": "integer",
-            "default": 0
-          },
-          "y": {
-            "type": "integer",
-            "default": 0
-          },
-          "z": {
-            "type": "integer",
-            "default": 0
-          },
-          "scale": {
-            "type": "integer",
-            "default": 0
-          },
-          "class": {
-            "type": "string",
-            "default": "step slide"
-          },
-          "rotate": {
-            "type": "integer",
-            "default": 0
-          },
-          "rotateX": {
-            "type": "integer",
-            "default": 0
-          },
-          "rotateY": {
-            "type": "integer",
-            "default": 0
-          },
-          "title": {
-            "type": "string",
-            "default": "default"
+          "slide": {
+            "type": "string"
           }
         }
       }
@@ -680,7 +606,7 @@
   },
   "tags": [
     {
-      "name": "Step"
+      "name": "Style"
     }
   ]
 }

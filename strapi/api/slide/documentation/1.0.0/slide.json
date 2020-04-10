@@ -630,6 +630,9 @@
                 },
                 "rotateY": {
                   "type": "integer"
+                },
+                "title": {
+                  "type": "string"
                 }
               }
             }
@@ -664,6 +667,33 @@
           },
           "liste": {
             "type": "object"
+          },
+          "styles": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "body": {
+                  "type": "string"
+                },
+                "slide": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "title": {
+            "type": "string",
+            "default": "default"
           }
         }
       },
@@ -711,6 +741,16 @@
           },
           "liste": {
             "type": "object"
+          },
+          "styles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "title": {
+            "type": "string",
+            "default": "default"
           }
         }
       }
