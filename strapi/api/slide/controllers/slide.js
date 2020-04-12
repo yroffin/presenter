@@ -14,7 +14,7 @@ module.exports = {
             // read binary data
             var binary = fs.readFileSync(file);
             // convert binary data to base64 encoded string
-            return new Buffer(binary).toString('base64');
+            return Buffer.from(binary).toString('base64');
         }
         var slide = await strapi.services.slide.findOne(parseInt(ctx.query.id));
         var steps = slide.steps;
