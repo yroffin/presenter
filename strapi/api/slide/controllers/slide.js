@@ -68,6 +68,12 @@ module.exports = {
                         },
                         'rel-z': function () {
                             return reference["rel-z"] ? 'data-rel-z=' + reference["rel-z"] : '';
+                        },
+                        'slide-num': function () {
+                            return `data-slide-num="${indice+1}"`;
+                        },
+                        'total-slides': function () {
+                            return `data-total-slides="${steps.length}"`;
                         }
                     }
                 }
@@ -106,6 +112,8 @@ module.exports = {
         {{#steps}}
             <div
                 {{{parameters.id}}}
+                {{{parameters.slide-num}}}
+                {{{parameters.total-slides}}}
                 {{{parameters.class}}}
                 {{{parameters.scale}}}
                 {{{parameters.rotate}}}

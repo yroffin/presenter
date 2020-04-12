@@ -191,7 +191,7 @@ div.geDiagramContainer {
 */
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.3;
+    opacity: 0.2;
 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;
@@ -235,6 +235,15 @@ div.geDiagramContainer {
 .slide blockquote {
     display: block;
     margin-top: 20px;
+}
+
+div.slide:after {
+    font-size: 12pt;
+    content: attr(data-slide-num) "/" attr(data-total-slides);
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    line-height: 1.9;
 }
 
 /*
