@@ -82,7 +82,7 @@ module.exports = {
     <link rel="stylesheet" href="data:text/css;charset=utf-8;base64,{{.}}">
     {{/cssBase64}}
     {{#css}}
-    <link rel="stylesheet" href="{{.}}">
+    <link rel="stylesheet" href="{{{.}}}">
     {{/css}}
     <style type="text/css">
         {{#styles}}
@@ -127,7 +127,7 @@ module.exports = {
     <script type="text/javascript" src="data:text/javascript;charset=utf-8;base64,{{.}}"></script>
     {{/scriptsBase64}}
     {{#scripts}}
-    <script type="text/javascript" src="{{.}}"></script>
+    <script type="text/javascript" src="{{{.}}}"></script>
     {{/scripts}}
     <script>impress().init();</script>
     <script>setTimeout(function () { GraphViewer.processElements(); }, 1000);</script>
@@ -143,13 +143,13 @@ module.exports = {
                 base64_encode("public//impress/css/impress-common.css")
             ],
             css: [
-                "//fonts.googleapis.com/css?family=Roboto"
+                "https://fonts.googleapis.com/css?family=Roboto"
             ],
             scriptsBase64: [
                 base64_encode("public/impress/js/impress.js")
             ],
             scripts: [
-                "//www.draw.io/js/viewer.min.js"
+                "https://www.draw.io/js/viewer.min.js"
             ]
         });
         return html;
