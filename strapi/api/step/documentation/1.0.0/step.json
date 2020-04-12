@@ -516,7 +516,8 @@
     "schemas": {
       "Step": {
         "required": [
-          "id"
+          "id",
+          "name"
         ],
         "properties": {
           "id": {
@@ -621,10 +622,20 @@
           "title": {
             "type": "string",
             "default": "default"
+          },
+          "raw": {
+            "type": "string"
+          },
+          "relative": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
       "NewStep": {
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -673,6 +684,13 @@
           "title": {
             "type": "string",
             "default": "default"
+          },
+          "raw": {
+            "type": "string"
+          },
+          "relative": {
+            "type": "boolean",
+            "default": false
           }
         }
       }

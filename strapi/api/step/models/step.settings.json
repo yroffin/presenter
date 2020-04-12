@@ -11,7 +11,8 @@
   },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "uuid": {
       "type": "uid"
@@ -58,6 +59,13 @@
     "title": {
       "type": "string",
       "default": "default"
+    },
+    "raw": {
+      "type": "text"
+    },
+    "relative": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

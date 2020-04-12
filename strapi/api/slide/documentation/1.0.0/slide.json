@@ -589,7 +589,8 @@
             "type": "array",
             "items": {
               "required": [
-                "id"
+                "id",
+                "name"
               ],
               "properties": {
                 "id": {
@@ -633,6 +634,12 @@
                 },
                 "title": {
                   "type": "string"
+                },
+                "raw": {
+                  "type": "string"
+                },
+                "relative": {
+                  "type": "boolean"
                 }
               }
             }

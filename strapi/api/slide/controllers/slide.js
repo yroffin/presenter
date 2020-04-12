@@ -1,6 +1,6 @@
 'use strict';
 const _ = require('lodash');
-const jade = require('jade');
+const Mustache = require('mustache');
 
 /**
  * Read the documentation (https://strapi.io/documentation/3.0.0-beta.x/concepts/controllers.html#core-controllers)
@@ -10,7 +10,7 @@ const jade = require('jade');
 module.exports = {
     impress: async ctx => {
         var slide = await strapi.services.slide.findOne(parseInt(ctx.query.id));
-        var steps = slide.steps;
+        var steps = slide.liste;
         var md = require('markdown-it')({
             html: true,
             linkify: true,
@@ -18,51 +18,111 @@ module.exports = {
         })
             .use(require('markdown-it-imsize'), { autofill: true })
             .use(require('markdown-it-drawio-viewer'), {});
-        var transform = _.sortBy(_.map(steps, (step) => {
-            return {
-                id: step.name.replace(' ', '-'),
-                title: step.title,
-                html: md.render(step.body ? step.body : ''),
-                class: step.class ? step.class : 'step slide',
-                x: step.x ? step.x : 0,
-                y: step.y ? step.y : 0,
-                z: step.z ? step.z : 0,
-                scale: step.scale ? step.scale : 1,
-                rotate: step.rotate ? step.rotate : 0,
-                rotateX: step.rotateX ? step.rotateX : 0,
-                rotateY: step.rotateY ? step.rotateY : 0,
-                weight: _.findIndex(slide.liste, (item) => {
-                    return item === step.name
-                })
+        var transform = await Promise.all(_.map(steps, async (reference, name) => {
+            let find = await strapi.query('step').find({ name: name });
+            if (find.length > 0) {
+                var step = find[0];
+                return {
+                    title: step.title ? step.title : 'default',
+                    html: step.body ? md.render(step.body ? step.body : '') : step.raw,
+                    parameters: {
+                        'id': function() {
+                            return 'id=' + step.name.replace(' ', '-');
+                        },
+                        'class': function() {
+                            return step.class ? `class="${step.class}"` + step.class : 'class="step slide"';
+                        },
+                        'scale': function() {
+                            return reference.scale ? 'data-scale=' + reference.scale : '';
+                        },
+                        'rotate': function() {
+                            return reference.rotate ? 'data-rotate=' + reference.rotate : '';
+                        },
+                        'rotate-x': function() {
+                            return reference["rotate-x"] ? 'data-rotate-x=' + reference["rotate-x"] : '';
+                        },
+                        'rotate-y': function() {
+                            return reference["rotate-y"] ? 'data-rotate-y=' + reference["rotate-y"] : '';
+                        },
+                        'x': function() {
+                            return reference.x ? 'data-x=' + reference.x : '';
+                        },
+                        'y': function() {
+                            return reference.y ? 'data-y=' + reference.y : '';
+                        },
+                        'z': function() {
+                            return reference.z ? 'data-z=' + reference.z : '';
+                        },
+                        'rel-x': function() {
+                            return reference["rel-x"] ? 'data-rel-x=' + reference["rel-x"] : '';
+                        },
+                        'rel-y': function() {
+                            return reference["rel-y"] ? 'data-rel-y=' + reference["rel-y"] : '';
+                        },
+                        'rel-z': function() {
+                            return reference["rel-z"] ? 'data-rel-z=' + reference["rel-z"] : '';
+                        }
+                    }
+                }
             }
-        }), (item) => item.weight);
-        var fn = jade.compile(`
-html(lang="en")
-    head
-    title= "sample slide"
-    each val in css
-        link(rel="stylesheet", href=val)
-    style(type='text/css')
-        each val in styles
-            != val.name + '{'
-                != val.body
-            != '}'
-    body
-    div(id='impress',data-transition-duration=slide.duration,data-width=slide.width,data-height=slide.height,data-max-scale=slide.maxScale,data-min-scale=slide.minScale,data-perspective=slide.perspective,data-autoplay=slide.autoplay)
-        each val in steps
-            h1= val.title
-            div(align='center',id=val.id,class=val.class,data-x=val.x,data-y=val.y,data-z=val.z,data-scale=val.scale,data-rotate=val.rotate,data-rotate-x=val.rotateX,data-rotate-y=val.rotateY)!= val.html
-    div(id='impress-toolbar')
-    div(id='impress-help')
-    each val in scripts
-        script(type='text/javascript', src=val)
-    script='impress().init();'
-    script='setTimeout(function() {GraphViewer.processElements();}, 1000);'
-`, {
+        }));
+        return Mustache.render(`
+<html lang="en" style="height: 100%;">
 
-        });
-        return fn({
-            slide: await strapi.services.slide.findOne(1),
+<head>
+    <title>sample slide</title>
+    {{#css}}
+    <link rel="stylesheet" href="{{.}}">
+    {{/css}}
+    <style type="text/css">
+        {{#styles}}
+        {{name}} {
+            {{body}}
+        }
+        {{/styles}}
+    </style>
+</head>
+
+<body>
+    <div
+        id="impress"
+        data-transition-duration="{{slide.duration}}"
+        data-width="{{slide.width}}"
+        data-height="{{slide.height}}"
+        data-max-scale="{{slide.maxScale}}"
+        data-min-scale="{{slide.minScale}}"
+        data-perspective="{{slide.perspective}}"
+        data-autoplay="{{slide.autoplay}}">
+        {{#steps}}
+            <div
+                {{{parameters.id}}}
+                {{{parameters.class}}}
+                {{{parameters.scale}}}
+                {{{parameters.rotate}}}
+                {{{parameters.rotate-x}}}
+                {{{parameters.rotate-y}}}
+                {{{parameters.x}}}
+                {{{parameters.y}}}
+                {{{parameters.z}}}
+                {{{parameters.rel-x}}}
+                {{{parameters.rel-y}}}
+                {{{parameters.rel-z}}}>
+                {{{html}}}
+            </div>
+        {{/steps}}
+    </div>
+    <div id="impress-toolbar"></div>
+    <div id="impress-help"></div>
+    {{#scripts}}
+    <script type="text/javascript" src="{{.}}"></script>
+    {{/scripts}}
+    <script>impress().init();</script>
+    <script>setTimeout(function () { GraphViewer.processElements(); }, 1000);</script>
+</body>
+
+</html>
+`, {
+            slide: slide,
             styles: slide.styles,
             steps: transform,
             css: [
