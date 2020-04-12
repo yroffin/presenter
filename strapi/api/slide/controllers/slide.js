@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs');
 const _ = require('lodash');
 const Mustache = require('mustache');
 
@@ -9,6 +10,12 @@ const Mustache = require('mustache');
 
 module.exports = {
     impress: async ctx => {
+        function base64_encode(file) {
+            // read binary data
+            var binary = fs.readFileSync(file);
+            // convert binary data to base64 encoded string
+            return new Buffer(binary).toString('base64');
+        }
         var slide = await strapi.services.slide.findOne(parseInt(ctx.query.id));
         var steps = slide.steps;
         var md = require('markdown-it')({
@@ -71,6 +78,9 @@ module.exports = {
 
 <head>
     <title>sample slide</title>
+    {{#cssBase64}}
+    <link rel="stylesheet" href="data:text/css;charset=utf-8;base64,{{.}}">
+    {{/cssBase64}}
     {{#css}}
     <link rel="stylesheet" href="{{.}}">
     {{/css}}
@@ -113,6 +123,9 @@ module.exports = {
     </div>
     <div id="impress-toolbar"></div>
     <div id="impress-help"></div>
+    {{#scriptsBase64}}
+    <script type="text/javascript" src="data:text/javascript;charset=utf-8;base64,{{.}}"></script>
+    {{/scriptsBase64}}
     {{#scripts}}
     <script type="text/javascript" src="{{.}}"></script>
     {{/scripts}}
@@ -125,13 +138,17 @@ module.exports = {
             slide: slide,
             styles: slide.styles,
             steps: transform,
+            cssBase64: [
+                base64_encode("public/impress/css/impress-demo.css"),
+                base64_encode("public//impress/css/impress-common.css")
+            ],
             css: [
-                "/impress/css/impress-demo.css",
-                "/impress/css/impress-common.css",
                 "//fonts.googleapis.com/css?family=Roboto"
             ],
+            scriptsBase64: [
+                base64_encode("public/impress/js/impress.js")
+            ],
             scripts: [
-                "/impress/js/impress.js",
                 "//www.draw.io/js/viewer.min.js"
             ]
         });
