@@ -543,12 +543,6 @@
               "uuid": {
                 "type": "uid"
               },
-              "steps": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "duration": {
                 "type": "integer"
               },
@@ -570,7 +564,7 @@
               "autoplay": {
                 "type": "integer"
               },
-              "liste": {
+              "steps": {
                 "type": "object"
               },
               "styles": {

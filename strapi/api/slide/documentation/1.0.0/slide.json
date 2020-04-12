@@ -585,65 +585,6 @@
           "uuid": {
             "type": "uid"
           },
-          "steps": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "uuid": {
-                  "type": "uid"
-                },
-                "slide": {
-                  "type": "string"
-                },
-                "body": {
-                  "type": "string"
-                },
-                "x": {
-                  "type": "integer"
-                },
-                "y": {
-                  "type": "integer"
-                },
-                "z": {
-                  "type": "integer"
-                },
-                "scale": {
-                  "type": "integer"
-                },
-                "class": {
-                  "type": "string"
-                },
-                "rotate": {
-                  "type": "integer"
-                },
-                "rotateX": {
-                  "type": "integer"
-                },
-                "rotateY": {
-                  "type": "integer"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "raw": {
-                  "type": "string"
-                },
-                "relative": {
-                  "type": "boolean"
-                }
-              }
-            }
-          },
           "duration": {
             "type": "integer",
             "default": 1000
@@ -672,7 +613,7 @@
             "type": "integer",
             "default": 7
           },
-          "liste": {
+          "steps": {
             "type": "object"
           },
           "styles": {
@@ -712,12 +653,6 @@
           "uuid": {
             "type": "uid"
           },
-          "steps": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "duration": {
             "type": "integer",
             "default": 1000
@@ -746,7 +681,7 @@
             "type": "integer",
             "default": 7
           },
-          "liste": {
+          "steps": {
             "type": "object"
           },
           "styles": {

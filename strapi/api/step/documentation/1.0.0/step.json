@@ -529,95 +529,8 @@
           "uuid": {
             "type": "uid"
           },
-          "slide": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uuid": {
-                "type": "uid"
-              },
-              "steps": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "duration": {
-                "type": "integer"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "maxScale": {
-                "type": "integer"
-              },
-              "minScale": {
-                "type": "integer"
-              },
-              "perspective": {
-                "type": "integer"
-              },
-              "autoplay": {
-                "type": "integer"
-              },
-              "liste": {
-                "type": "object"
-              },
-              "styles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "title": {
-                "type": "string"
-              }
-            }
-          },
           "body": {
             "type": "string"
-          },
-          "x": {
-            "type": "integer",
-            "default": 0
-          },
-          "y": {
-            "type": "integer",
-            "default": 0
-          },
-          "z": {
-            "type": "integer",
-            "default": 0
-          },
-          "scale": {
-            "type": "integer",
-            "default": 0
-          },
-          "class": {
-            "type": "string",
-            "default": "step slide"
-          },
-          "rotate": {
-            "type": "integer",
-            "default": 0
-          },
-          "rotateX": {
-            "type": "integer",
-            "default": 0
-          },
-          "rotateY": {
-            "type": "integer",
-            "default": 0
           },
           "title": {
             "type": "string",
@@ -625,10 +538,6 @@
           },
           "raw": {
             "type": "string"
-          },
-          "relative": {
-            "type": "boolean",
-            "default": false
           }
         }
       },
@@ -643,43 +552,8 @@
           "uuid": {
             "type": "uid"
           },
-          "slide": {
-            "type": "string"
-          },
           "body": {
             "type": "string"
-          },
-          "x": {
-            "type": "integer",
-            "default": 0
-          },
-          "y": {
-            "type": "integer",
-            "default": 0
-          },
-          "z": {
-            "type": "integer",
-            "default": 0
-          },
-          "scale": {
-            "type": "integer",
-            "default": 0
-          },
-          "class": {
-            "type": "string",
-            "default": "step slide"
-          },
-          "rotate": {
-            "type": "integer",
-            "default": 0
-          },
-          "rotateX": {
-            "type": "integer",
-            "default": 0
-          },
-          "rotateY": {
-            "type": "integer",
-            "default": 0
           },
           "title": {
             "type": "string",
@@ -687,10 +561,6 @@
           },
           "raw": {
             "type": "string"
-          },
-          "relative": {
-            "type": "boolean",
-            "default": false
           }
         }
       }

@@ -16,10 +16,6 @@
     "uuid": {
       "type": "uid"
     },
-    "steps": {
-      "via": "slide",
-      "collection": "step"
-    },
     "duration": {
       "type": "integer",
       "default": 1000
@@ -48,7 +44,7 @@
       "type": "integer",
       "default": 7
     },
-    "liste": {
+    "steps": {
       "type": "json"
     },
     "styles": {

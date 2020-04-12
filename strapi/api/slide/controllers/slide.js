@@ -10,7 +10,7 @@ const Mustache = require('mustache');
 module.exports = {
     impress: async ctx => {
         var slide = await strapi.services.slide.findOne(parseInt(ctx.query.id));
-        var steps = slide.liste;
+        var steps = slide.steps;
         var md = require('markdown-it')({
             html: true,
             linkify: true,
@@ -18,55 +18,55 @@ module.exports = {
         })
             .use(require('markdown-it-imsize'), { autofill: true })
             .use(require('markdown-it-drawio-viewer'), {});
-        var transform = await Promise.all(_.map(steps, async (reference, name) => {
-            let find = await strapi.query('step').find({ name: name });
+        var transform = await Promise.all(_.map(steps, async (reference, indice) => {
+            let find = await strapi.query('step').find({ name: reference.name });
             if (find.length > 0) {
                 var step = find[0];
                 return {
                     title: step.title ? step.title : 'default',
                     html: step.body ? md.render(step.body ? step.body : '') : step.raw,
                     parameters: {
-                        'id': function() {
-                            return 'id=' + step.name.replace(' ', '-');
+                        'id': function () {
+                            return `id="${step.name.replace(' ', '-')}-${indice}"`;
                         },
-                        'class': function() {
-                            return step.class ? `class="${step.class}"` + step.class : 'class="step slide"';
+                        'class': function () {
+                            return reference.class ? `class="${reference.class}"` : 'class="step slide"';
                         },
-                        'scale': function() {
+                        'scale': function () {
                             return reference.scale ? 'data-scale=' + reference.scale : '';
                         },
-                        'rotate': function() {
+                        'rotate': function () {
                             return reference.rotate ? 'data-rotate=' + reference.rotate : '';
                         },
-                        'rotate-x': function() {
+                        'rotate-x': function () {
                             return reference["rotate-x"] ? 'data-rotate-x=' + reference["rotate-x"] : '';
                         },
-                        'rotate-y': function() {
+                        'rotate-y': function () {
                             return reference["rotate-y"] ? 'data-rotate-y=' + reference["rotate-y"] : '';
                         },
-                        'x': function() {
+                        'x': function () {
                             return reference.x ? 'data-x=' + reference.x : '';
                         },
-                        'y': function() {
+                        'y': function () {
                             return reference.y ? 'data-y=' + reference.y : '';
                         },
-                        'z': function() {
+                        'z': function () {
                             return reference.z ? 'data-z=' + reference.z : '';
                         },
-                        'rel-x': function() {
+                        'rel-x': function () {
                             return reference["rel-x"] ? 'data-rel-x=' + reference["rel-x"] : '';
                         },
-                        'rel-y': function() {
+                        'rel-y': function () {
                             return reference["rel-y"] ? 'data-rel-y=' + reference["rel-y"] : '';
                         },
-                        'rel-z': function() {
+                        'rel-z': function () {
                             return reference["rel-z"] ? 'data-rel-z=' + reference["rel-z"] : '';
                         }
                     }
                 }
             }
         }));
-        return Mustache.render(`
+        var html = Mustache.render(`
 <html lang="en" style="height: 100%;">
 
 <head>
@@ -135,5 +135,6 @@ module.exports = {
                 "//www.draw.io/js/viewer.min.js"
             ]
         });
+        return html;
     },
 };
